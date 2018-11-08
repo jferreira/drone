@@ -19,6 +19,7 @@ gem 'webpacker'
 
 ### Added Gems ###
 gem 'devise'
+gem 'pundit'
 
 
 group :development do
