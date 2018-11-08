@@ -2,10 +2,13 @@ class PackagesController < ApplicationController
   def index
   end
 
-  def show
+  def new
   end
 
-  def new
+  def create
+  end
+  
+  def show
   end
 
   def edit
