@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'packages/index'
+  get 'packages/show'
+  get 'packages/new'
+  get 'packages/edit'
   get 'users/index'
   get 'users/new'
   get 'users/edit'
