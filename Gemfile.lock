@@ -110,6 +110,8 @@ GEM
     pry-rails (0.3.7)
       pry (>= 0.10.4)
     puma (3.12.0)
+    pundit (2.0.0)
+      activesupport (>= 3.0.0)
     rack (2.0.6)
     rack-proxy (0.6.5)
       rack
@@ -152,15 +154,15 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.0.7)
-      railties (>= 4.0.0, < 6)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
     sassc (2.0.0)
       ffi (~> 1.9.6)
       rake
+    sassc-rails (2.0.0)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -214,9 +216,10 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
+  pundit
   rails (= 5.2.1)
   redis
-  sass-rails
+  sassc-rails
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -228,4 +231,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.5
+   1.17.1
