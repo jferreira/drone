@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
   def index
+    @bookings = Booking.where(id: params[:package_id])
+
   end
 
   def new
@@ -25,6 +27,7 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @package = Package.find(params[:package_id])
   end
 
   def update
