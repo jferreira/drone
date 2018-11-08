@@ -1,2 +1,18 @@
 <h1>Packages#show</h1>
-<p>Find me in app/views/packages/show.html.erb</p>
+
+<!--
+<#% if @bookings.length.positive? %>
+<p>You just created <#%= @bookings.last.title %></p>
+<#% end %> -->
+
+<img src="<%= @package.url_image %>" alt="" class="package-image">
+
+<div class="package-content">
+  <p class="package-title"> Type: <%= @package.title %> </p>
+  <p class="package-title"> Description: <%= @package.description %> </p>
+  <p class="package-title"> Price: <%= @package.description %> </p>
+</div>
+
+<%= link_to 'Request booking', new_package_booking_path(@package) %>
+<br>
+<%= link_to 'Back to packages', packages_path(@package) %>

@@ -20,7 +20,9 @@
                 </div>
                 <img class="card-user" src=<%=p.url_image %>
                 >
-                <a class="card-link" href="#" ></a>
+
+                <%= link_to 'See details', package_path(p), class:"card-link"  %>
+
             </div>
         </div>
       <% end %>
