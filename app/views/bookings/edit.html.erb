@@ -13,9 +13,22 @@
     <br>
     <%= simple_form_for [@package, @booking] do |f| %>
       <%= f.input :title %>
-      <%= f.input :status %>
+      <div class="booking-status">
+        <%= f.label :status %>
+        <br>
+        <%= @booking.status %>
+      </div>
+
+    <br>
       <%= f.submit 'Update booking', class: "btn btn-primary" %>
+      <%= link_to 'Cancel booking', cancel_booking_path(@booking), method: :patch, class: 'btn btn-danger' %>
     <% end %>
+
+    <br>
+
+
+
+    <br>
 
     <%= link_to 'Back to booking', package_booking_path(params[:package_id]) %>
     <br>

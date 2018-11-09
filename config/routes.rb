@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :packages do
     resources :bookings
   end
+
+  patch 'bookings/:id/cancel_booking', to: 'bookings#cancel_booking', as: 'cancel_booking'
 end
