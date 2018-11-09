@@ -22,11 +22,21 @@
     <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
     <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a> -->
 
+
+
+
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
+
         <% if user_signed_in? %>
-        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+
+           <% if current_user.url_image.nil? %>
+              <img src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+           <% else %>
+              <img src="<%=current_user.url_image %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+            <% end %>
+
         <% else %>
 
         <% end %>
