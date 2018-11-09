@@ -28,16 +28,28 @@
 
         <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <% else %>
+          <div class="grey-circle avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
 
+          </div>
+          <style>
+            .grey-circle {
+              height: 30px;
+              width: 30px;
+              border-radius: 50%;
+              background-color: rgb(200,200,200);
+            }
+          </style>
         <% end %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <% if user_signed_in? %>
           <li><a href="#">Profile</a></li>
           <li><a href="#">Dashboard</a></li>
-          <% if user_signed_in? %>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to 'Add Package', new_package_path  %></li>
+            <li><%= link_to 'Edit Profile', edit_user_path %></li>
+            <% else %>
+            <li><%= link_to 'Log In', new_user_session_path %></li>
           <% end %>
-          <li><%= link_to 'Add Package', new_package_path  %></li>
-          <li><%= link_to 'Edit Profile', edit_user_path %></li>
         </ul>
       </div>
     </div>
