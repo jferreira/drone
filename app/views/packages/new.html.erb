@@ -1,14 +1,25 @@
-<h1>Packages New</h1>
-<p>If you would like to add a package</p>
+  <div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://s3-us-west-2.amazonaws.com/hispotion-prod/wp-content/uploads/2015/09/surf-video-759x500.jpg');">
+    <div class="banner-content">
+      <h1>Packages New</h1>
+      <p>If you would like to add a package</p>
+  <!--     <a class="btn btn-primary btn-lg">Start now</a> -->
+    </div>
+  </div>
 
-<%= simple_form_for [@package] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :url_image %>
-  <%= f.input :price %>
-  <%= f.submit 'Create package', class: "btn btn-primary" %>
-<% end %>
+<div class="container">
 
-<br>
+  <div class="row col-xs-10-offset-2 col-sm-4-offset-4 col-sm-4-offset-4">
+    <br>
+    <%= simple_form_for [@package] do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :url_image %>
+      <%= f.input :price %>
+      <%= f.submit 'Create package', class: "btn btn-primary" %>
+    <% end %>
 
-<%= link_to 'Back to packages', packages_path %>
+    <br>
+    <%= link_to 'Back to packages', packages_path %>
+
+  </div>
+</div>

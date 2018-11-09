@@ -15,10 +15,12 @@ class PackagesController < ApplicationController
 
     # Hard code
     @package.user_id = 1
-    if @package.save!
+    if @package.save
       redirect_to packages_path
+      flash[:notice] = "Your package has been created"
     else
       render :new
+      flash[:alert] = "There are some errors"
     end
   end
 
