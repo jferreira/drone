@@ -11,22 +11,41 @@
 <div class="container">
   <div class="row">
 
-      <% @packages.each do |p|%>
+      <% @packages.each do |package|%>
         <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=p.url_image %>');">
-                <div class="card-category"><%=p.title %></div>
+
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=package.url_image %>');">
+                <div class="card-category"><%=package.title %></div>
                 <div class="card-description">
-                  <p><%=p.description %></p>
+                  <p><%=package.description %></p>
                   <!-- <p>Very cool city, the best</p> -->
                 </div>
-                <img class="card-user" src=<%=p.url_image %>
+                <img class="card-user" src=<%=package.url_image %>
                 >
 
-                <%= link_to 'See details', package_path(p), class:"card-link"  %>
-
+                <%= link_to 'See details', package_bookings_path(package), class:"card-link"  %>
             </div>
+
         </div>
       <% end %>
+
+              <div class="col-xs-12 col-sm-4 col-md-4">
+
+            <div class="card" linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2));">
+                <div class="card-category"></p>Add Package</p></div>
+
+                <div class="card-description">
+                  <p>Upload your own package</p>
+                </div>
+
+                <%= link_to '', new_package_path, class:"card-link"  %>
+
+            </div>
+
+        </div>
+
+
+
 
   </div>
 </div>

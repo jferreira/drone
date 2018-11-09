@@ -1,2 +1,14 @@
-<h1>Packages#new</h1>
-<p>Find me in app/views/packages/new.html.erb</p>
+<h1>Packages New</h1>
+<p>If you would like to add a package</p>
+
+<%= simple_form_for [@package] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :url_image %>
+  <%= f.input :price %>
+  <%= f.submit 'Create package', class: "btn btn-primary" %>
+<% end %>
+
+<br>
+
+<%= link_to 'Back to packages', packages_path %>
