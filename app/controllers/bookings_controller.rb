@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
   def index
+    @package = Package.find(params[:package_id])
+    @bookings = Booking.where(id: @package.id)
   end
 
   def new
@@ -22,12 +24,23 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
   end
 
   def edit
+    @package = Package.find(params[:package_id])
+    @booking = Booking.find(params[:id])
   end
 
   def update
+    @package = Package.find(params[:package_id])
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+    if @booking.save
+      redirect_to package_booking_path(@package, @booking)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -36,6 +49,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:title, :location, :start_datetime, :end_datetime, :cost)
+    params.require(:booking).permit(:title, :status, :location, :start_datetime, :end_datetime, :cost)
   end
 end
