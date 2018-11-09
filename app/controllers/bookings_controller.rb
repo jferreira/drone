@@ -18,8 +18,10 @@ class BookingsController < ApplicationController
 
     if @booking.save!
       redirect_to package_path(@package)
+      flash[:notice] = "Your booking has been sent!"
     else
       render :new
+      flash[:alert] = "There are some errors"
     end
   end
 
@@ -38,8 +40,10 @@ class BookingsController < ApplicationController
     @booking.update(booking_params)
     if @booking.save
       redirect_to package_booking_path(@package, @booking)
+      flash[:notice] = "Your booking has been updated!"
     else
       render :edit
+      flash[:alert] = "There are some errors"
     end
   end
 
