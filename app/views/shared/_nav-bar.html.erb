@@ -6,8 +6,11 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-  <%= current_user.first_name %>
+
+<%= current_user.first_name %>                                   
+<%= link_to 'Add Package', new_package_path  %>
 <!--     <a href="" class="navbar-wagon-item navbar-wagon-link">Host</a>
+
     <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
     <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a> -->
 
@@ -19,6 +22,7 @@
           <li><a href="#">Profile</a></li>
           <li><a href="#">Dashboard</a></li>
           <li><a href="#">Log Out</a></li>
+          <%= link_to 'Add Package', new_package_path  %>
         </ul>
       </div>
     </div>
@@ -29,6 +33,7 @@
     <div class="dropdown">
       <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <%= link_to 'Add Package', new_package_path  %>
 <!--         <li><a href="#">Host</a></li>
         <li><a href="#">Trips</a></li>
         <li><a href="#">Messagese</a></li> -->

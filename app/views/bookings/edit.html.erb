@@ -1,2 +1,24 @@
-<h1>Bookings#edit</h1>
-<p>Find me in app/views/bookings/edit.html.erb</p>
+<div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://s3-us-west-2.amazonaws.com/hispotion-prod/wp-content/uploads/2015/09/surf-video-759x500.jpg');">
+  <div class="banner-content">
+    <h1>Bookings Edit</h1>
+    <p>Something not quit right update it</p>
+<!--     <a class="btn btn-primary btn-lg">Start now</a> -->
+  </div>
+</div>
+
+
+<div class="container">
+
+  <div class="row col-xs-10-offset-2 col-sm-4-offset-4 col-sm-4-offset-4">
+    <br>
+    <%= simple_form_for [@package, @booking] do |f| %>
+      <%= f.input :title %>
+      <%= f.input :status %>
+      <%= f.submit 'Update booking', class: "btn btn-primary" %>
+    <% end %>
+
+    <%= link_to 'Back to booking', package_booking_path(params[:package_id]) %>
+    <br>
+  </div>
+
+</div>

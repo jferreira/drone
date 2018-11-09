@@ -4,24 +4,31 @@ class PackagesController < ApplicationController
     @packages = Package.all
   end
 
-  # def new
-  #   @package = Package.find(params[:id])
-  # end
-
-  # def create
-  #   @package = Package.new(package_params)
-  #   if package.save
-  #     # redirect_to packages_path
-  #   else
-  #     render :new
-  #   end
-  # end
-
-  def show
-    @package = Package.find(params[:id])
-    # @bookings = Booking.find(@package.booking_ids)
-    # The above may be require in order to display the notification in the show page?
+  def new
+    @package = Package.new
   end
+
+  def create
+    current_user
+
+    @package = Package.new(package_params)
+
+    # Hard code
+    @package.user_id = 1
+    if @package.save
+      redirect_to packages_path
+      flash[:notice] = "Your package has been created"
+    else
+      render :new
+      flash[:alert] = "There are some errors"
+    end
+  end
+
+  # def show
+  #   @package = Package.find(params[:id])
+  #   # @bookings = Booking.find(@package.booking_ids)
+  #   # The above may be require in order to display the notification in the show page?
+  # end
   # def edit
   #   @package = Package.find(params[:id])
   # end
@@ -39,8 +46,11 @@ class PackagesController < ApplicationController
 
   # private
 
-  # def package_params
-  # params.require(:packages).permit(:title, :description, :url_image, :price)
-  # end
+  def package_params
+  params.require(:package).permit(:title, :description, :url_image, :price)
+  end
 
 end
+
+
+

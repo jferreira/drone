@@ -1,2 +1,28 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+  <div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://s3-us-west-2.amazonaws.com/hispotion-prod/wp-content/uploads/2015/09/surf-video-759x500.jpg');">
+    <div class="banner-content">
+      <h1>Booking details</h1>
+      <p>the details of your booking</p>
+  <!--     <a class="btn btn-primary btn-lg">Start now</a> -->
+    </div>
+  </div>
+
+<div class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-14">
+
+      <%= @booking.title %>
+      <%= @booking.status %>
+
+      <br>
+
+      <%= link_to 'Edit booking', edit_package_booking_path(params[:package_id], @booking) %>
+
+      <br>
+
+      <%= link_to 'Back to all bookings', package_bookings_path(params[:package_id]) %>
+
+      </div>
+    </div>
+
+</div>
