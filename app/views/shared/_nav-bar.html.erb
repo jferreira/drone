@@ -11,10 +11,9 @@
     <% if user_signed_in? %>
       <%= current_user.first_name %>
     <% end %>
-    <%= link_to 'Add Package', new_package_path  %>
 
     <%= link_to 'Create', new_package_path, class: "btn btn-default" %>
-    <%= link_to 'Packages', packages_path, class: "btn btn-default" %>
+    <%= link_to 'Book', packages_path, class: "btn btn-default" %>
 <!--     link_to 'Bookings', packages_bookings_path, class: "btn btn-default" -->
 
 <!--     <a href="" class="navbar-wagon-item navbar-wagon-link">Host</a>
@@ -26,6 +25,7 @@
     <div class="navbar-wagon-item">
       <div class="dropdown">
         <% if user_signed_in? %>
+
         <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <% else %>
 

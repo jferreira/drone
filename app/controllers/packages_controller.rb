@@ -26,7 +26,7 @@ class PackagesController < ApplicationController
 
   def show
     @package = Package.find(params[:id])
-    # @bookings = Booking.find(@package.booking_ids)
+    @bookings = Booking.find(@package.booking_ids)
     # The above may be require in order to display the notification in the show page?
   end
   # def edit
