@@ -1,15 +1,29 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://s3-us-west-2.amazonaws.com/hispotion-prod/wp-content/uploads/2015/09/surf-video-759x500.jpg');">
+  <div class="banner-content">
+    <h1>Bookings New</h1>
+    <p>Book an a drone operator</p>
+<!--     <a class="btn btn-primary btn-lg">Start now</a> -->
+  </div>
+</div>
 
-<%= simple_form_for [@package, @booking] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :location %>
-  <%= f.input :start_datetime %>
-  <%= f.input :end_datetime %>
-  <%= f.input :cost %>
-  <%= f.submit 'Request booking', class: "btn btn-primary" %>
-<% end %>
+<div class="container">
 
-<br>
+  <div class="row col-xs-10-offset-2 col-sm-4-offset-4 col-sm-4-offset-4">
+    <br>
 
-  <%= link_to 'Back to package', package_path(@package) %>
+    <%= simple_form_for [@package, @booking] do |f| %>
+      <%= f.input :title %>
+      <%= f.input :location %>
+      <%= f.input :start_datetime %>
+      <%= f.input :end_datetime %>
+      <%= f.input :cost %>
+      <%= f.submit 'Request booking', class: "btn btn-primary" %>
+    <% end %>
+
+    <br>
+
+      <%= link_to 'Back to package', package_path(@package) %>
+
+    </div>
+
+</div>
