@@ -27,7 +27,7 @@ class PackagesController < ApplicationController
   def show
     @package = Package.find(params[:id])
     @bookings = Booking.find(@package.booking_ids)
-    # The above may be require in order to display the notification in the show page?
+
   end
   # def edit
   #   @package = Package.find(params[:id])
@@ -47,7 +47,7 @@ class PackagesController < ApplicationController
   # private
 
   def package_params
-  params.require(:package).permit(:title, :description, :url_image, :price)
+  params.require(:package).permit(:title, :description, :url_image, :price, :photo)
   end
 
 end
