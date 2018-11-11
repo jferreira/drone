@@ -1,67 +1,63 @@
 <div class="navbar-wagon">
-  <!-- Logo -->
-  <a href="/" class="navbar-wagon-brand">
-<!--     <img src="images/logo.png" alt="Drone"> -->
-    <p>Drone</p>
-  </a>
+
+<%= link_to 'Drone', packages_path %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-
     <% if user_signed_in? %>
       <%= current_user.first_name %>
     <% end %>
+    <br>
+    <%= link_to 'Drone Packages', packages_path, class: "btn btn-default" %>
+    <br>
+    <%= link_to 'Your Bookings', dashboard_path, class: "btn btn-default" %>
 
-    <%= link_to 'Create', new_package_path, class: "btn btn-default" %>
-    <%= link_to 'Book', packages_path, class: "btn btn-default" %>
-<!--     link_to 'Bookings', packages_bookings_path, class: "btn btn-default" -->
+    <!-- DROPDOWN - DESKTOP -------------------------------------------------------------------------- -->
 
-<!--     <a href="" class="navbar-wagon-item navbar-wagon-link">Host</a>
-
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a> -->
-
-    <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
 
-        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-
-
         <% if user_signed_in? %>
-           <% if current_user.url_image.nil? %>
+
+          <% if current_user.url_image.nil? %>
               <img src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-           <% else %>
+          <% else %>
               <img src="<%=current_user.url_image %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-            <% end %>
+          <% end %>
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
-          <li><%= link_to 'Bookings', dashboard_path  %></li>
           <% if user_signed_in? %>
-
-            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to 'Your Bookings', dashboard_path  %></li>
             <li><%= link_to 'Add Package', new_package_path  %></li>
-            <li><%= link_to 'Edit Profile', edit_user_path %></li>
-            <% else %>
+            <li><%= link_to 'Your Profile', edit_user_path %></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Drone Packages', packages_path %></li>
+            <br>
             <li><%= link_to 'Log In', new_user_session_path %></li>
           <% end %>
-          
+
+        <% end %>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- Dropdown appearing on mobile only -->
+  <!-- MOBILE ONLY------------------------------------------------------------------ -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <%= link_to 'Add Package', new_package_path  %>
-<!--     <li><a href="#">Host</a></li>
-        <li><a href="#">Trips</a></li>
-        <li><a href="#">Messagese</a></li> -->
+          <% if user_signed_in? %>
+            <li><%= link_to 'Your Bookings', dashboard_path  %></li>
+            <li><%= link_to 'Add Package', new_package_path  %></li>
+            <li><%= link_to 'Your Profile', edit_user_path %></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Log In', new_user_session_path %></li>
+          <% end %>
       </ul>
     </div>
   </div>
