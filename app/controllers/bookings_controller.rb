@@ -16,9 +16,9 @@ class BookingsController < ApplicationController
     @booking.package = @package
     @booking.user_id = 1
 
-    if @booking.save!
+    if @booking.save
       redirect_to package_path(@package)
-      flash[:notice] = "Your booking has been sent!"
+      flash[:notice] = "Your booking request has been sent!"
     else
       render :new
       flash[:alert] = "There are some errors"
