@@ -22,39 +22,20 @@
     <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
     <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a> -->
 
-
-
-
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-<<<<<<< HEAD
 
         <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-=======
+
 
         <% if user_signed_in? %>
-
            <% if current_user.url_image.nil? %>
               <img src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
            <% else %>
               <img src="<%=current_user.url_image %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
             <% end %>
 
-        <% else %>
-          <div class="grey-circle avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-
-          </div>
-          <style>
-            .grey-circle {
-              height: 30px;
-              width: 30px;
-              border-radius: 50%;
-              background-color: rgb(200,200,200);
-            }
-          </style>
-        <% end %>
->>>>>>> 6483e0e0dfbe720a831483ce667a534c16de073d
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
           <li><%= link_to 'Bookings', dashboard_path  %></li>
@@ -66,6 +47,7 @@
             <% else %>
             <li><%= link_to 'Log In', new_user_session_path %></li>
           <% end %>
+          
         </ul>
       </div>
     </div>
