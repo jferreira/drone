@@ -12,7 +12,17 @@
       <% @packages.each do |package|%>
         <div class="col-xs-12 col-sm-4 col-md-4">
 
+          <% if package.photo.blank? %>
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=package.url_image %>');">
+          <% else %>
+            <div class="card"
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+             url('<%= cl_image_path package.photo, height: 300, width: 400, crop: :fill %>')">
+          <% end %>
+
+
+
+
                 <div class="card-category"><%=package.title %></div>
                 <div class="card-description">
                   <p><%=package.description %></p>
@@ -41,9 +51,6 @@
             </div>
 
         </div>
-
-
-
 
   </div>
 </div>
