@@ -22,8 +22,7 @@ class PackagesController < ApplicationController
 
     @package = Package.new(package_params)
 
-    # Hard code
-    @package.user_id = 1
+    @package.user_id = current_user.id
     if @package.save
       redirect_to packages_path
       flash[:notice] = "Your package has been created"
@@ -36,22 +35,23 @@ class PackagesController < ApplicationController
   def show
     @package = Package.find(params[:id])
     @bookings = Booking.find(@package.booking_ids)
-
   end
-  # def edit
-  #   @package = Package.find(params[:id])
-  # end
-  # def update
-  #   if @package.update(package_params)
-  #     # redirect_to ___________
-  #   else
-  #     render :edit
-  #   end
-  # end
-  # def destroy
-  #   @package.destroy
-  #   package.save
-  # end
+
+  def edit
+    @package = Package.find(params[:id])
+  end
+
+  def update
+    @package = Package.find(params[:id])
+    @package.update(package_params)
+    redirect_to packages_path
+  end
+
+  def destroy
+    @package = Package.find(params[:id])
+    @package.destroy
+    redirect_to packages_path
+  end
 
   # private
 
