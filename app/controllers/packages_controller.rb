@@ -12,9 +12,9 @@ class PackagesController < ApplicationController
     current_user
 
     @package = Package.new(package_params)
-
+    raise
     # Hard code
-    @package.user_id = 1
+    @package.user_id = current_user.id
     if @package.save
       redirect_to packages_path
       flash[:notice] = "Your package has been created"

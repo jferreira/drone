@@ -15,9 +15,7 @@
           <% if package.photo.blank? %>
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=package.url_image %>');">
           <% else %>
-            <div class="card"
-              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-             url('<%= cl_image_path package.photo, height: 300, width: 400, crop: :fill %>')">
+
           <% end %>
 
 
