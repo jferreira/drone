@@ -4,6 +4,7 @@ class Package < ApplicationRecord
   has_many :bookings
   validates :title, :description, :price, :url_image, presence: true
   mount_uploader :photo, PhotoUploader
+
 end
 
 

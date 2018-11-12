@@ -8,13 +8,26 @@
 
       <div class="row">
       <br>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <form class="form-inline">
+
+        <!-- <div class="col-xs-12 col-sm-12 col-md-12"> -->
+          <!-- SEARCH -------------------------------- -->
+<!--           <form class="form-inline" >
             <input class="form-control mr-sm-4" type="search" placeholder="Locations, Operators" aria-label="Search">
             <button class="btn btn btn-primary" type="submit">Search</button>
           </form>
-        </div>
+        </div> -->
 
+        <%= form_tag packages_path, method: :get do %>
+
+          <%= text_field_tag :query, class: "form-control mr-sm-4", placeholder: "Locations, Operators" %>
+          <%= submit_tag "Search Packages", class: "btn btn btn-primary" %>
+
+        <% end %>
+
+
+
+
+        <!-- FILTER BY ------------------------------- -->
     <!--         <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="btn-group">
                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

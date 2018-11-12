@@ -1,7 +1,18 @@
 class PackagesController < ApplicationController
 
   def index
-    @packages = Package.all
+    if params.key? "query"
+      query = params[:query]
+      @users = User.where(location: query).or
+
+      @packages = []
+      @users.each do |user|
+        @packages << user.packages
+      end
+
+    else
+      @packages = Package.all
+    end
   end
 
   def new
