@@ -1,16 +1,32 @@
 class PackagesController < ApplicationController
 
   def index
-    @packages = Package.all
-    #@packages = Package.where.not(latitude: nil, longitude: nil)
 
-    # @markers = @packages.map do |flat|
-    #   {
-    #     lat: package.latitude,
-    #     lng: package.longitude#,
-    #     # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-    #   }
-    #   end
+    @packages = Package.where.not(latitude: nil, longitude: nil)
+
+
+    @markers = @packages.map do |package|
+      {
+        lat: package.latitude,
+        lng: package.longitude,
+        infoWindow: { content: render_to_string(partial: "/packages/map_box", locals: { package: package }) }
+      }
+    end
+
+    if params.key? "query"
+      query = params[:query]
+      @users = User.where(location: query)
+
+      @packages = []
+
+      @users.each do |user|
+        @packages << user.packages
+      end
+
+    else
+      @packages = Package.all
+    end
+
   end
 
   def new
