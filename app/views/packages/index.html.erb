@@ -1,31 +1,32 @@
 <div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://s3-us-west-2.amazonaws.com/hispotion-prod/wp-content/uploads/2015/09/surf-video-759x500.jpg');">
+
   <div class="banner-content">
     <h1>Drone Packages</h1>
     <p>Drones are banging, Get one to follow you</p>
 <!--     <a class="btn btn-primary btn-lg">Start now</a> -->
 
     <div class="container">
-
       <div class="row">
-      <br>
 
-        <!-- <div class="col-xs-12 col-sm-12 col-md-12"> -->
-          <!-- SEARCH -------------------------------- -->
-<!--           <form class="form-inline" >
-            <input class="form-control mr-sm-4" type="search" placeholder="Locations, Operators" aria-label="Search">
-            <button class="btn btn btn-primary" type="submit">Search</button>
-          </form>
-        </div> -->
 
-        <%= form_tag packages_path, method: :get do %>
+        <!-- SEARCH BY ------------------------------- -->
 
-<!-- placeholder: "Locations, Operators", -->
+        <%= form_tag(packages_path, method: :get, role: 'form') do %>
 
-          <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag "Search Packages", class: "btn btn btn-primary" %>
+          <div class='row'>
+            <div class='offset-xs-0 col-xs-12 offset-md-0 col-md-12'>
+
+              <div class="form-group">
+                <%= text_field_tag :query, nil, placeholder: 'Locations, Operators', class: 'form-control' %>
+                <br>
+                <%= submit_tag "Search", class: "btn btn-primary" %>
+                <%= submit_tag "Reset", class: "btn btn-default", type: 'reset', value: 'Reset' %>
+              </div>
+
+            </div>
+          </div>
 
         <% end %>
-
 
         <!-- FILTER BY ------------------------------- -->
     <!--         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -59,20 +60,20 @@
 
 
           <% if package.photo.blank? %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=package.url_image %>');">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= package.url_image %>');">
 
-            <% else %>
-              <div class="card"
-                style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+          <% else %>
+            <div class="card"
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
 
-              <% user = package.user_id %>
-              <% url_image = user.url_image %>
+            <% user = package.user_id %>
+            <% url_image = user.url_image %>
+            <%= url_image %>
+             url('<%= url_image %>')">
+          <% end %>
 
-               url('<%= cl_image_path url_image, height: 400, width: 400, crop: :fill %>')">
-
-            <% end %>
               <div class="card-category">
-                <%=package.title %>
+                <%=package.location %>
               </div>
 
               <div class="card-description">
@@ -80,12 +81,11 @@
                 <!-- <p>Very cool city, the best</p> -->
               </div>
 
-              <img class="card-user" src=<%=package.url_image %>
+              <img class="card-user" src="<%= package.user.url_image %>"
               >
               <%= link_to 'See details', package_path(package), class:"card-link"  %>
               </div>
             </div>
-
           <% end %>
 
         <div class="col-xs-12 col-sm-4 col-md-4">
