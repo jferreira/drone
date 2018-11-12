@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   end
 
   patch 'bookings/:id/cancel_booking', to: 'bookings#cancel_booking', as: 'cancel_booking'
+  patch 'bookings/:id/accept_booking', to: 'bookings#accept_booking', as: 'accept_booking'
   get '/my_dashboard', to: 'dashboard#my_dashboard', as: 'dashboard'
 end

@@ -109,6 +109,35 @@
                         </div>
                       </div>
                     </div><br>
+
+
+                    <!-- Accept / Reject booking Section -->
+
+                    <div class="container text-center">
+                      <div class="row">
+                        <div class="col-sm-6">
+
+                          <%= link_to 'Reject',
+                          cancel_booking_path(booking),
+                          method: :patch,
+                          class: 'btn btn-danger reject-booking'
+                           %>
+
+
+                        </div>
+                        <div class="col-sm-6">
+
+                          <%= link_to 'Accept',
+                          accept_booking_path(booking),
+                          method: :patch,
+                          class: 'btn btn-default accept-booking'
+                           %>
+
+
+                        </div>
+                      </div>
+                    </div><br>
+
                   </div>
           <% end %>
 
