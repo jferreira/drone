@@ -1,5 +1,3 @@
-
-
 #### User Creation ####
 
 letters = %w[q w e r t y]
@@ -41,6 +39,7 @@ images = %w[https://thumbs.gfycat.com/CrispEnlightenedBarbet-size_restricted.gif
     url_image: images.sample,
     price: %w[$100 $110 $120 $130 $140].sample,
     # review_id: (1..50).to_a.sample,
+    location: %w[canggu kuta ubud munduk].sample,
     user: User.all.sample
   }
 
@@ -83,10 +82,3 @@ puts 'Start creating bookings data'
 end
 
 puts 'Finshed creating bookings data'
-
-
-
-
-
-
-

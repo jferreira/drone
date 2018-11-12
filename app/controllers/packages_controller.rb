@@ -2,6 +2,15 @@ class PackagesController < ApplicationController
 
   def index
     @packages = Package.all
+    #@packages = Package.where.not(latitude: nil, longitude: nil)
+
+    # @markers = @packages.map do |flat|
+    #   {
+    #     lat: package.latitude,
+    #     lng: package.longitude#,
+    #     # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+    #   }
+    #   end
   end
 
   def new
