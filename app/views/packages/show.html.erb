@@ -31,17 +31,11 @@
   <%= link_to 'View other packages', packages_path(@package), class: "btn btn-default" %>
   <br>
 
-  <!-- if i am the owner i can see the delete button -->
-
-
-
   <% if current_user.id == @package.user_id %>
     <h2>You are the owner</h2>
     <%= link_to 'Delete package', "/packages/#{@package.id}/", method: :delete, class: "btn btn-danger" %>
+    <%= link_to 'Update package', edit_package_path(@package), class: "btn btn-default" %>
   <% end %>
-
-
-  <!-- if i am the requester i can see the bookings detail button -->
 
   <%= link_to 'Booking details', package_booking_path(@bookings), class: "btn btn-default" %>
   <br>

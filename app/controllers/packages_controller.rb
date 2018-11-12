@@ -27,16 +27,16 @@ class PackagesController < ApplicationController
     @package = Package.find(params[:id])
     @bookings = Booking.find(@package.booking_ids)
   end
-  # def edit
-  #   @package = Package.find(params[:id])
-  # end
-  # def update
-  #   if @package.update(package_params)
-  #     # redirect_to ___________
-  #   else
-  #     render :edit
-  #   end
-  # end
+
+  def edit
+    @package = Package.find(params[:id])
+  end
+
+  def update
+    @package = Package.find(params[:id])
+    @package.update(package_params)
+    redirect_to packages_path
+  end
 
   def destroy
     @package = Package.find(params[:id])
