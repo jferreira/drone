@@ -27,6 +27,10 @@ gem 'carrierwave', '~> 1.2'
 # ADDED: SEEDING GEM
 gem 'faker'
 
+# ADDED: DATE PICKER GEM
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

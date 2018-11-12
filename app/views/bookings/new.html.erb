@@ -1,6 +1,6 @@
 <div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://s3-us-west-2.amazonaws.com/hispotion-prod/wp-content/uploads/2015/09/surf-video-759x500.jpg');">
   <div class="banner-content">
-    <h1>Bookings New</h1>
+    <h1>New Booking Request</h1>
     <p>Book an a drone operator</p>
 <!--     <a class="btn btn-primary btn-lg">Start now</a> -->
   </div>
@@ -8,15 +8,65 @@
 
 <div class="container">
 
-  <div class="row col-xs-10-offset-2 col-sm-4-offset-4 col-sm-4-offset-4">
+  <div class="row">
+    <div class="col-xs-10-offset-2 col-sm-4-offset-4 col-sm-4-offset-4">
     <br>
 
     <%= simple_form_for [@package, @booking] do |f| %>
-      <%= f.input :title %>
-      <%= f.input :location %>
+      <!-- = f.input :title %> -->
+    </div>
+  </div>
+
+
+
+<!-- <div class="container">
+    <div class='col-md-5'>
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker6'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-5'>
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker7'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script> -->
+
+
+      <p>Hi, i'd like to make a booking for:</p>
+
       <%= f.input :start_datetime %>
       <%= f.input :end_datetime %>
-      <%= f.input :cost %>
+
+      <p>At this location:</p>
+
+      <%= f.input :location %>
+
+       <!-- f.input :cost %> -->
       <%= f.submit 'Request booking', class: "btn btn-primary" %>
     <% end %>
 
