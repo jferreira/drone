@@ -27,7 +27,7 @@ puts 'Start creating user accounts'
     user_data = {
       first_name: first_name,
       email: "#{i}_#{first_name}@testing.com",
-      password: "12345678#{i}",
+      password: "123456",
       last_name: last_names.sample,
       location: locations.sample,
       lat: lat.sample,
