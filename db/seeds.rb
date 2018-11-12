@@ -28,7 +28,13 @@ puts 'Start creating user accounts'
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIuzb7Erj8RCCOyIW2spGGAdea8K3U70zWejcG4_Hd1z1JF0jQ",
                   "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&h=350",
                   "http://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9&s=2cbaca6f5dc24bb35aab13e97e390994",
-                  "https://images.pexels.com/photos/573299/pexels-photo-573299.jpeg?auto=compress&cs=tinysrgb&h=350"]
+                  "https://images.pexels.com/photos/573299/pexels-photo-573299.jpeg?auto=compress&cs=tinysrgb&h=350"],
+  package_content = ["<p>Drone Cinematography and Aerial Video Services:</p>
+                <p>We Specialize in two operator professional drone cinematography and video services, delivering stunning video impossible or prohibitively expensive to capture by traditional methods - helicopter, crane, dolly, cable-cam, or 'Russian arm'. From majestic aerial drone videos to fast, low and close-up tracking of fast moving subjects, our two operator drone teams have the expertise, experience, and passion to deliver the shots you need. We fly RED and other cinematic cameras!</p>
+                <br>
+                <p>Drone Cinematography</p>
+                <p>Our drone aerial videography services allow you to capture professional stabilized footage from a unique point-of-view in full HD quality including HD, 4K, 5.2K and 8K options. From scenic landscape flyovers to low, fast, tracking action shots, our experienced and skilled aerial cinematography team can do it all. We offer variety of equipment to work with to suit any drone video project need - from smaller action cams, through DSLR camera drones to cinematic camera drone and gimbal packages - Yes, we fly RED!</p>"]
+
 
 25.times do |i|
   puts "------------------------------"
@@ -67,6 +73,7 @@ images = %w[https://thumbs.gfycat.com/CrispEnlightenedBarbet-size_restricted.gif
   package_data = {
     title: %w[Basic Advanced Premium].sample,
     description: 'Experience Drone guy, for 1h of filming and editing',
+    content: package_content,
     url_image: images.sample,
     price: %w[$50 $100 $110 $120 $130 $140].sample,
     # review_id: (1..50).to_a.sample,
