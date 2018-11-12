@@ -24,6 +24,10 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 
+# ADDED: SEARCH GEMS
+gem 'searchkick', '~> 3.0'
+
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
