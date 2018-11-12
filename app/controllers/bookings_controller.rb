@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.status = 'Pending'
     @booking.package = @package
-    @booking.user_id = 1
+    @booking.user_id = current_user.id
 
     if @booking.save
       redirect_to package_path(@package)

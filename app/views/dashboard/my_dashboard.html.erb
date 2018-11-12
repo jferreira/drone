@@ -17,7 +17,6 @@
   </div>
 </div>
 
-
 <style>
   .img-circle {
     border-radius: 50%;
@@ -42,27 +41,26 @@
 
 </style>
 
+
 <div class="container">
-  <h2>Dynamic Tabs</h2>
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li class="active"><a data-toggle="tab" href="#home">Bookings</a></li>
+    <li><a data-toggle="tab" href="#menu1">Jobs</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
 
-      <h3>HOME</h3>
+    <div id="home" class="tab-pane fade in active">
 
             <% if @bookings.length.zero? %>
 
-                <p>Make your first booking</p>
+                <p>Make your first BOOKING</p>
 
             <% end %>
 
-              <% @bookings.each_with_index do |booking, idx|%>
+            <% @bookings.each_with_index do |booking, idx|%>
 
-                <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
+                  <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
 
                   <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
 
@@ -79,93 +77,33 @@
             <% end %>
 
     </div>
-</div>
+
 
     <div id="menu1" class="tab-pane fade">
 
+            <% if @my_jobs.length.zero? %>
 
-      <h3>Menu 1</h3>
+                <p>No JOBS yet</p>
 
+            <% end %>
 
- <% @my_jobs.each_with_index do |booking, idx|%>
+           <% @my_jobs.each_with_index do |booking, idx|%>
 
+                  <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
 
-        <div class="booking-container">
-          <div class="container text-center">
+                  <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
 
-            <div class="col-sm-4">
-              <p class="booking-index">#
-                <%= idx + 1%>
-              </p>
-            </div>
-            <div class="col-sm-4">
-              <p class="booking-date">
-                <%= booking.start_datetime.strftime("%m/%d/%Y") %>
-              </p>
-            </div>
-            <div class="col-sm-4">
+                  <%= render 'shared/booking_header',
+                  index: idx + 1,
+                  booking: booking,
+                  number_hours: number_hours,
+                  status_color: status_color
+                  %>
 
-              <p class="booking-total-cost">
+                  <%= render 'shared/booking_body', booking: booking %>
+                  <%= render 'shared/booking_footer', booking: booking %>
 
-              </p>
-            </div>
-          </div>
-        </div><br>
-
-        <div class="container">
-          <div class="row ">
-            <div class="col-sm-12 text-center">
-              <p class="bookings-thumbnail">image</p>
-            </div>
-          </div>
-        </div><br>
-
-        <div class="container text-center">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="location-box">
-                <p class="booking-title">Kit Kat</p>
-                <!-- To be changed -->
-                <p class="location-data">
-                  <%= booking.location %>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div><br>
-
-
-        <!-- Accept / Reject booking Section -->
-        <!-- Would be good to make link_to elements below as -->
-        <!-- reusable components -->
-
-        <div class="container text-center">
-          <div class="row">
-            <div class="col-sm-6">
-
-              <%= link_to 'Reject',
-                          cancel_booking_path(booking),
-                          method: :patch,
-                          class: 'btn btn-danger'
-                           %>
-
-            </div>
-            <div class="col-sm-6">
-
-              <%= link_to 'Accept',
-                          accept_booking_path(booking),
-                          method: :patch,
-                          class: 'btn btn-default'
-                           %>
-
-            </div>
-          </div>
-        </div><br>
-
-    </div>
-
-    <% end %>
-
+              <% end %>
 
     </div>
 

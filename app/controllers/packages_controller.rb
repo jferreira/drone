@@ -15,6 +15,10 @@ class PackagesController < ApplicationController
 
   end
 
+  def new
+    @package = Package.new
+  end
+
   def create
     current_user
 
@@ -38,7 +42,7 @@ class PackagesController < ApplicationController
   def edit
     @package = Package.find(params[:id])
   end
-  
+
   def update
     @package = Package.find(params[:id])
     @package.update(package_params)
