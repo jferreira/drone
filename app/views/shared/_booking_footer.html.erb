@@ -1,0 +1,22 @@
+          <!-- Accept / Reject booking Section -->
+          <!-- Would be good to make link_to elements below as -->
+          <!-- reusable components -->
+
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-sm-6">
+                  <%= link_to 'Reject',
+                cancel_booking_path(booking),
+                method: :patch,
+                class: 'btn btn-danger'
+                 %>
+              </div>
+              <div class="col-sm-6">
+                  <%= link_to 'Accept',
+                accept_booking_path(booking),
+                method: :patch,
+                class: 'btn btn-default'
+                 %>
+              </div>
+            </div>
+          </div>
