@@ -3,9 +3,10 @@ class PackagesController < ApplicationController
   def index
     if params.key? "query"
       query = params[:query]
-      @users = User.where(location: query).or
+      @users = User.where(location: query)
 
       @packages = []
+
       @users.each do |user|
         @packages << user.packages
       end

@@ -15,7 +15,11 @@ puts 'Start creating user accounts'
                     "Old Man's Beach, Canggu, Bali, Indonesia",
                     "Batu Bolong Beach, Canggu, Bali, Indonesia",
                     "Double Six Beach, Canggu, Bali, Indonesia"]
-avatars = ["https://avatars0.githubusercontent.com/u/43139321?v=4",
+
+  lat = %w[-8.6594824 -8.678640 -8.649100 -8.697390]
+  long = %w[115.1301361 115.262720 115.137890 115.161940]
+
+  avatars = ["https://avatars0.githubusercontent.com/u/43139321?v=4",
                   "https://avatars3.githubusercontent.com/u/28381425?v=4",
                   "https://avatars2.githubusercontent.com/u/19579480?v=4",
                   "https://avatars2.githubusercontent.com/u/43283863?v=4",
@@ -25,7 +29,6 @@ avatars = ["https://avatars0.githubusercontent.com/u/43139321?v=4",
                   "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&h=350",
                   "http://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9&s=2cbaca6f5dc24bb35aab13e97e390994",
                   "https://images.pexels.com/photos/573299/pexels-photo-573299.jpeg?auto=compress&cs=tinysrgb&h=350"]
-
 
 25.times do |i|
   puts "------------------------------"
@@ -37,62 +40,14 @@ avatars = ["https://avatars0.githubusercontent.com/u/43139321?v=4",
       password: "12345678#{i}",
       last_name: last_names.sample,
       location: locations.sample,
+      lat: lat.sample,
+      long: long.sample,
       url_image: avatars.sample
 
     }
   user = User.new(user_data)
   user.save!
 end
-
-
-
-
-
-  # LAST NAMES --------------------------------------------------------
-  # user_last_names.each do |user_last_name|
-
-  # puts "------------------------------"
-  # puts "Adding Last Name: #{user_last_name}"
-
-  #   user_data = {
-  #     last_name: "#{user_last_name}",
-  #   }
-
-  # user = User.new(user_data)
-  # user.save!
-  # end
-
-  # LOCATIONS -------------------------------------------------------------
-
-  # user_locations.each do |user_location|
-
-  # puts "------------------------------"
-  # puts "Adding User Location: #{user_location}"
-
-  #   user_data = {
-  #     location: "#{user_location}",
-  #   }
-  # user = User.new(user_data)
-  # user.save!
-  # end
-
-
-
-  # user_avatars.each do |avatar_photo|
-
-  #   puts "------------------------------"
-  #   puts 'Adding Profile Avatar'
-
-  #   user_data = {
-  #     image_url: "#{avatar_photo}",
-  #   }
-
-  # user = User.new(user_data)
-  # user.save!
-  # end
-
-
-
 
 puts "---------------------------------------------------------------------"
 puts 'Finished creating user accounts'
@@ -115,8 +70,10 @@ images = %w[https://thumbs.gfycat.com/CrispEnlightenedBarbet-size_restricted.gif
     url_image: images.sample,
     price: %w[$50 $100 $110 $120 $130 $140].sample,
     # review_id: (1..50).to_a.sample,
+    user: User.all.sample,
     location: %w[canggu kuta ubud munduk].sample,
-    user: User.all.sample
+    lat: lat.sample,
+    long: long.sample
   }
     package = Package.new(package_data)
     package.save!
@@ -148,7 +105,9 @@ puts 'Start creating bookings data'
     end_datetime: end_time,
     cost: %w[$100 $110 $120 $130 $140].to_a.sample,
     package: Package.all.sample,
-    user: User.all.sample
+    user: User.all.sample,
+    lat: lat.sample,
+    long: long.sample
   }
     booking = Booking.new(booking_data)
     booking.save!
