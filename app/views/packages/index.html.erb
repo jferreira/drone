@@ -7,16 +7,22 @@
 
     <div class="container">
       <div class="row">
+
+
+        <!-- SEARCH BY ------------------------------- -->
+
         <%= form_tag(packages_path, method: :get, role: 'form') do %>
 
           <div class='row'>
             <div class='offset-xs-0 col-xs-12 offset-md-0 col-md-12'>
+
               <div class="form-group">
-                <%= text_field_tag :term, nil, placeholder: 'Locations, Operators', class: 'form-control' %>
+                <%= text_field_tag :query, nil, placeholder: 'Locations, Operators', class: 'form-control' %>
                 <br>
                 <%= submit_tag "Search", class: "btn btn-primary" %>
                 <%= submit_tag "Reset", class: "btn btn-default", type: 'reset', value: 'Reset' %>
               </div>
+
             </div>
           </div>
 
@@ -54,7 +60,7 @@
 
 
           <% if package.photo.blank? %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=package.url_image %>');">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= package.url_image %>');">
 
           <% else %>
             <div class="card"
@@ -62,8 +68,8 @@
 
             <% user = package.user_id %>
             <% url_image = user.url_image %>
-
-             url('<%= cl_image_path url_image, height: 400, width: 400, crop: :fill %>')">
+            <%= url_image %>
+             url('<%= url_image %>')">
           <% end %>
 
               <div class="card-category">
@@ -75,7 +81,7 @@
                 <!-- <p>Very cool city, the best</p> -->
               </div>
 
-              <img class="card-user" src=<%=package.url_image %>
+              <img class="card-user" src="<%= package.user.url_image %>"
               >
               <%= link_to 'See details', package_path(package), class:"card-link"  %>
               </div>

@@ -1,23 +1,18 @@
 class PackagesController < ApplicationController
 
   def index
-    if params.key? "query"
-      query = params[:query]
-      @users = User.where(location: query)
-
-      @packages = []
-
-      @users.each do |user|
-        @packages << user.packages
-      end
-
+    if params[:query].present?
+      sql_query = " \
+        packages.location @@ :query \
+        OR users.location @@ :query \
+        OR users.first_name @@ :query \
+        OR users.last_name @@ :query \
+      "
+      @packages = Package.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     else
       @packages = Package.all
     end
-  end
 
-  def new
-    @package = Package.new
   end
 
   def create
