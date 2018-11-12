@@ -34,13 +34,20 @@ class PackagesController < ApplicationController
 
   def update
     @package = Package.find(params[:id])
-    @package.update(package_params)
+
+    if @package.user_id == current_user.id
+      @package.update(package_params)
+    end
+
     redirect_to packages_path
   end
 
   def destroy
     @package = Package.find(params[:id])
-    @package.destroy
+
+    if @package.user_id == current_user.id
+      @package.destroy
+    end
     redirect_to packages_path
   end
 
