@@ -26,12 +26,17 @@ class BookingsController < ApplicationController
   end
 
   def cancel_booking
-
     @booking = Booking.find(params[:id])
-    @package = Package.find(@booking.id)
     @booking.status = 'Rejected'
     @booking.save
-      redirect_to package_bookings_path(@package)
+      redirect_to dashboard_path
+  end
+
+  def accept_booking
+    @booking = Booking.find(params[:id])
+    @booking.status = 'Accepted'
+    @booking.save
+      redirect_to dashboard_path
   end
 
   def show

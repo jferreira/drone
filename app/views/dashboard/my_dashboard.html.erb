@@ -1,122 +1,173 @@
-
-
-
-<style>
-.img-circle {
-  border-radius: 50%;
-  max-width: 20%;
-}
-</style>
-
-
 <div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://s3-us-west-2.amazonaws.com/hispotion-prod/wp-content/uploads/2015/09/surf-video-759x500.jpg');">
   <div class="banner-content">
 
     <% if current_user.url_image.nil? %>
       <img class="img-circle" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" alt="">
-    <% else %>
-      <!-- Include here user image -->
-      <img class="img-circle" src="#" alt="">
-    <% end %>
+      <% else %>
+        <!-- Include here user image -->
+        <img class="img-circle" src="#" alt="">
+        <% end %>
 
-
-    <h1><%= current_user.first_name.nil? ? 'Hello stranger' : current_user.first_name %></h1>
-    <p><%= current_user.location.nil? ? 'Lovely island' : current_user.location %></p>
-<!--     <a class="btn btn-primary btn-lg">Start now</a> -->
+          <h1>
+            <%= current_user.first_name.nil? ? 'Hello stranger' : current_user.first_name %>
+          </h1>
+          <p>
+            <%= current_user.location.nil? ? 'Lovely island' : current_user.location %>
+          </p>
   </div>
 </div>
 
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-sm-4">
-          <p class="bookings-header-title">Your bookings</p>
-        </div>
-        <div class="col-sm-4">
-          <p class="jobs-header-title">Your jobs</p>
-        </div>
-        <div class="col-sm-4">
-          <p class="profile-header-title">Profile Settings</p>
-        </div>
-      </div>
-    </div><br>
 
 <style>
+  .img-circle {
+    border-radius: 50%;
+    max-width: 20%;
+  }
 
-.bookings-thumbnail {
-  display: inline-block; background-color: grey; width: 50px;
-}
+  .bookings-thumbnail {
+    display: inline-block;
+    background-color: grey;
+    width: 50px;
+  }
 
-.red {
-  background-color: red;
-}
+  .red {
+    background-color: red;
+  }
 
-.green {
-  background-color: green;
-}
+  .green {
+    background-color: green;
+  }
+
+  .tab-content { overflow: hidden; }
+
 </style>
 
-
 <div class="container">
+  <h2>Dynamic Tabs</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+  </ul>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-14">
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
 
-        <% if @bookings.length.zero? %>
+      <h3>HOME</h3>
 
-        <p>Make your first booking</p>
+            <% if @bookings.length.zero? %>
 
-        <% end %>
+                <p>Make your first booking</p>
 
-          <% @bookings.each_with_index do |booking, idx|%>
+            <% end %>
 
-              <% number_hours = (booking.end_datetime - booking.start_datetime) / 3600 %>
+              <% @bookings.each_with_index do |booking, idx|%>
 
-                <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
-                  <div class="booking-container">
-                    <div class="container text-center">
+                <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
 
-                      <div class="row booking-first-half <%= status_color %>">
+                  <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
 
-                        <div class="col-sm-4">
-                          <p class="booking-index">#<%= idx + 1%></p>
-                        </div>
-                        <div class="col-sm-4">
-                          <p class="booking-date">
-                            <%= booking.start_datetime.strftime("%m/%d/%Y") %>
-                          </p>
-                        </div>
-                        <div class="col-sm-4">
-                          <p class="booking-duration">30 min</p>
-                          <p class="booking-total-cost">
-                            $<%= booking.cost.tr('$','').to_i * number_hours.round(0) %>
-                          </p>
-                        </div>
-                      </div>
-                    </div><br>
+                  <%= render 'shared/booking_header',
+                  index: idx + 1,
+                  booking: booking,
+                  number_hours: number_hours,
+                  status_color: status_color
+                  %>
 
-                    <div class="container">
-                      <div class="row ">
-                        <div class="col-sm-12 text-center">
-                          <p class="bookings-thumbnail">image</p>
-                        </div>
-                      </div>
-                    </div><br>
+                  <%= render 'shared/booking_body', booking: booking %>
+                  <%= render 'shared/booking_footer', booking: booking %>
 
-                    <div class="container text-center">
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="location-box">
-                            <p class="booking-title">Kit Kat</p> <!-- To be changed -->
-                            <p class="location-data"><%= booking.location %></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div><br>
-                  </div>
-          <% end %>
+            <% end %>
 
-        </div>
     </div>
 </div>
 
+    <div id="menu1" class="tab-pane fade">
 
+
+      <h3>Menu 1</h3>
+
+
+ <% @my_jobs.each_with_index do |booking, idx|%>
+
+
+        <div class="booking-container">
+          <div class="container text-center">
+
+            <div class="col-sm-4">
+              <p class="booking-index">#
+                <%= idx + 1%>
+              </p>
+            </div>
+            <div class="col-sm-4">
+              <p class="booking-date">
+                <%= booking.start_datetime.strftime("%m/%d/%Y") %>
+              </p>
+            </div>
+            <div class="col-sm-4">
+
+              <p class="booking-total-cost">
+
+              </p>
+            </div>
+          </div>
+        </div><br>
+
+        <div class="container">
+          <div class="row ">
+            <div class="col-sm-12 text-center">
+              <p class="bookings-thumbnail">image</p>
+            </div>
+          </div>
+        </div><br>
+
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="location-box">
+                <p class="booking-title">Kit Kat</p>
+                <!-- To be changed -->
+                <p class="location-data">
+                  <%= booking.location %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div><br>
+
+
+        <!-- Accept / Reject booking Section -->
+        <!-- Would be good to make link_to elements below as -->
+        <!-- reusable components -->
+
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-sm-6">
+
+              <%= link_to 'Reject',
+                          cancel_booking_path(booking),
+                          method: :patch,
+                          class: 'btn btn-danger'
+                           %>
+
+            </div>
+            <div class="col-sm-6">
+
+              <%= link_to 'Accept',
+                          accept_booking_path(booking),
+                          method: :patch,
+                          class: 'btn btn-default'
+                           %>
+
+            </div>
+          </div>
+        </div><br>
+
+    </div>
+
+    <% end %>
+
+
+    </div>
+
+  </div>
+</div>
