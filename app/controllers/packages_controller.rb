@@ -12,8 +12,7 @@ class PackagesController < ApplicationController
     current_user
 
     @package = Package.new(package_params)
-    raise
-    # Hard code
+
     @package.user_id = current_user.id
     if @package.save
       redirect_to packages_path
@@ -27,7 +26,6 @@ class PackagesController < ApplicationController
   def show
     @package = Package.find(params[:id])
     @bookings = Booking.find(@package.booking_ids)
-
   end
   # def edit
   #   @package = Package.find(params[:id])
@@ -39,10 +37,12 @@ class PackagesController < ApplicationController
   #     render :edit
   #   end
   # end
-  # def destroy
-  #   @package.destroy
-  #   package.save
-  # end
+
+  def destroy
+    @package = Package.find(params[:id])
+    @package.destroy
+    redirect_to packages_path
+  end
 
   # private
 
