@@ -17,7 +17,6 @@
   </div>
 </div>
 
-
 <style>
   .img-circle {
     border-radius: 50%;
@@ -88,8 +87,11 @@
 
             <% end %>
 
-
            <% @my_jobs.each_with_index do |booking, idx|%>
+
+                  <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
+
+                  <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
 
                   <%= render 'shared/booking_header',
                   index: idx + 1,
