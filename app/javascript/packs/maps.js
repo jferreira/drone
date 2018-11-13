@@ -1,9 +1,15 @@
 import GMaps from 'gmaps/gmaps.js';
 
-console.log("messsiiiii");
+// require('mapbox-gl/dist/mapbox-gl.css')
+// // ADD THIS LINE 👇
+// require('@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css')
+// // [ ... ]
+
 
 const mapElement = document.getElementById('map');
+
 console.log(mapElement);
+
 if (mapElement) { // don't try to build a map if there's no div#map to inject in
   const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
   const markers = JSON.parse(mapElement.dataset.markers);
@@ -17,19 +23,22 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     map.fitLatLngBounds(markers);
   }
 }
-        // var contentString = "<div>Hello</div>"
 
-        // var infowindow = new google.maps.InfoWindow({
-        //   content: contentString,
-        //   maxWidth: 200
-        // });
+// if (mapElement) {
+// // [ ... ]
+//   markers.forEach((marker) => {
+//     new mapboxgl.Marker()
+//       .setLngLat([marker.lng, marker.lat])
+//       .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+//       .setHTML(marker.infoWindow.content))
+//       .addTo(map);
+//   })
+// // [ ... ]
+// }
 
-      //   var marker = new google.maps.Marker;
-
-      //   marker.addListener('click', function() {
-      //     infowindow.open(map, marker);
-      //   });
-      // }
-
-
-//{lat: -8.7223957, lng: 115.1767095}
+// if (mapElement) {
+//   // [ ... ]
+//   map.addControl(new MapboxGeocoder({
+//     accessToken: mapboxgl.accessToken
+//   }));
+// }
