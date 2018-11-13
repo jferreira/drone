@@ -13,7 +13,7 @@
     <% end %>
 
       <h1>
-        <%= current_user.first_name.nil? ? 'Hello stranger' : current_user.first_name %>
+        <%= current_user.first_name.nil? ? 'Hello stranger' : current_user.first_name + " " + current_user.last_name %>
       </h1>
       <p>
         <%= current_user.location.nil? ? 'Lovely island' : current_user.location %>
