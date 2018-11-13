@@ -36,7 +36,8 @@
         <% end %>
 
         <!-- FILTER BY ------------------------------- -->
-    <!--         <div class="col-xs-12 col-sm-12 col-md-12">
+        <!--
+        <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="btn-group">
                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <p>Filter:</p>
@@ -46,7 +47,8 @@
                         <p>Filter by price</p>
                 </div>
               </div>
-          </div> -->
+          </div>
+        -->
       <br>
 
       </div><!-- Row end -->
@@ -63,8 +65,8 @@
   <div class="row">
 
 <!-- LIST ------------ -->
-    
-    
+
+
       <% @packages.each do |package|%>
         <div class="col-xs-12 col-sm-4 col-md-4">
 
@@ -92,11 +94,11 @@
               </div>
             </div>
           <% end %>
-              
-              
+
+
 
 <!-- MAPS ------------ -->
-                     
+
    <div class="col-xs-8">
       <div class="row">
         <% @packages.each do |package|%>
@@ -107,8 +109,8 @@
 
       </div>
     </div>
-                     
-                     
+
+
     <div class="col-sm-4">
       <div
         id="map"
