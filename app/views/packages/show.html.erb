@@ -1,4 +1,4 @@
-<div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path @package.photo %>');">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://thumbs.gfycat.com/CrispEnlightenedBarbet-size_restricted.gif");>
   <div class="banner-content">
     <h1><%= @package.title %> Package</h1>
     <p><%= @package.description %></p>
@@ -40,7 +40,6 @@
     <%= link_to 'Update package', edit_package_path(@package), class: "btn btn-default" %>
   <% end %>
 
-  <%= link_to 'Booking details', package_booking_path(@bookings), class: "btn btn-default" %>
   <br>
 
 

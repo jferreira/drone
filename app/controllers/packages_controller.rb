@@ -13,6 +13,7 @@ class PackagesController < ApplicationController
       }
     end
 
+
     # SEARCH FILTER --------------------------
     if params[:query].present?
       sql_query = " \
