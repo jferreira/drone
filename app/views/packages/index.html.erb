@@ -62,16 +62,17 @@
 <div class="container">
   <div class="row">
 
+
       <% @packages.each do |package|%>
         <div class="col-xs-12 col-sm-4 col-md-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("<%= cl_image_path package.photo %>");">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(src="<%= package.url_image %>");>
             <div class="card-category">Popular</div>
             <div class="card-description">
               <h2>Le Wagon Shanghai</h2>
               <p>Very cool city, the best</p>
             </div>
 
-            <% if current_user.url_image.nil? %>
+            <% if current_user.nil? %>
             <img class="card-user" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu">
             <% else %>
             <img class="card-user" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu">
