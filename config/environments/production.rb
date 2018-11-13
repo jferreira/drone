@@ -30,7 +30,7 @@ Rails.application.configure do
 
   # When this error > Uglifier::Error: Unexpected token: eof (undefined). To use ES6 syntax, harmony mode must be enabled with Uglifier.new(:harmony => true).
   # config.assets.js_compressor = :uglifier
-  config.assets.js_compressor = Uglifier.new(harmony: true)
+  # config.assets.js_compressor = Uglifier.new(harmony: true)
 
   # config.assets.css_compressor = :sass
 
