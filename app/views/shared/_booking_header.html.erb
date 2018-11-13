@@ -1,0 +1,23 @@
+  <div class="booking-container">
+    <div class="container text-center">
+      <div class="row booking-first-half <%= status_color %>">
+        <div class="col-sm-4">
+          <p class="booking-index">#
+            <%= index %>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <p class="booking-date">
+            <%= booking.start_datetime.strftime("%m/%d/%Y") %>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <p class="booking-duration">
+            <%= number_hours %> hours</p>
+          <p class="booking-total-cost">
+            $
+            <%= booking.cost.tr('$','').to_i * number_hours.round(0) %>
+          </p>
+        </div>
+      </div>
+    </div>
