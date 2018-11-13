@@ -59,67 +59,35 @@
 </div><!-- Banner end -->
 
 
-
-<!-- THE LIST OF PACKAGES ----------------------------- -->
 <div class="container">
   <div class="row">
 
-<!-- LIST ------------ -->
-
-
       <% @packages.each do |package|%>
         <div class="col-xs-12 col-sm-4 col-md-4">
-
-
-          <% if package.photo.blank? %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= package.url_image %>');">
-
-          <% else %>
-            <div class="card"
-              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-
-            <% user = package.user_id %>
-            <% url_image = package.url_image %>
-            <%= url_image %>
-             url('<%= url_image %>')">
-          <% end %>
-
-              <div class="card-category">
-                <%=package.location %>
-              </div>
-
-              <img class="card-user" src="<%= package.user.url_image %>"
-              >
-              <%= link_to 'See details', package_path(package), class:"card-link"  %>
-              </div>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("<%= cl_image_path package.photo %>");">
+            <div class="card-category">Popular</div>
+            <div class="card-description">
+              <h2>Le Wagon Shanghai</h2>
+              <p>Very cool city, the best</p>
             </div>
-          <% end %>
+
+            <% if current_user.url_image.nil? %>
+            <img class="card-user" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+            <% else %>
+            <img class="card-user" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+            <% end %>
+
+            <a class="card-link" href="#" ></a>
+          </div>
+          <%= link_to 'See details', package_path(package), class:"card-link"  %>
+          </div>
+        </div>
+      <% end %>
 
 
 
 <!-- MAPS ------------ -->
 
-   <div class="col-xs-8">
-      <div class="row">
-        <% @packages.each do |package|%>
-          <div class="col-xs-8 col-sm-4 col-md-4">
-            <%= render "packages/card", package: package %>
-          </div>
-        <% end %>
 
-      </div>
-    </div>
-
-
-    <div class="col-sm-4">
-      <div
-        id="map"
-        style="width: 100%;
-        height: 600px;"
-        data-markers="<%= @markers.to_json %>"
-      >
-      </div>
-    </div>
-  </div>
   <%= render "packages/new_package_link" %>
 </div>

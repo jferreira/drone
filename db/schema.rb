@@ -35,12 +35,11 @@ ActiveRecord::Schema.define(version: 2018_11_12_085121) do
   create_table "packages", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "url_image"
+    t.string "photo"
     t.integer "price"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
     t.float "latitude"
     t.float "longitude"
     t.string "location"
