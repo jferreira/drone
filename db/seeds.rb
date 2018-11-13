@@ -60,6 +60,7 @@ images = %w[https://thumbs.gfycat.com/CrispEnlightenedBarbet-size_restricted.gif
     description: 'Experience Drone guy, for 1h of filming and editing',
     content: package_content,
     photo: images.sample,
+    url_image: images.sample,
     price: %w[$50 $100 $110 $120 $130 $140].sample,
     # review_id: (1..50).to_a.sample,
     user: User.all.sample,
