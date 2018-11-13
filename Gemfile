@@ -23,6 +23,7 @@ gem 'pundit'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
+gem "geocoder"
 
 # ADDED: SEEDING GEM
 gem 'faker'

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'user/edit', to: 'users#edit', as:  :edit_user
+  get 'packages/map', to: 'packages#index', as:  :packages_map
 
   resources :users, only: [:update, :show]
   resources :packages do
