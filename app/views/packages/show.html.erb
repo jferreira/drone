@@ -1,22 +1,18 @@
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://thumbs.gfycat.com/CrispEnlightenedBarbet-size_restricted.gif");>
-  <div class="banner-content">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://thumbs.gfycat.com/CrispEnlightenedBarbet-size_restricted.gif");>
+  <div class="banner-content package-title-show package-text-body">
     <h1><%= @package.title %> Package</h1>
     <p><%= @package.description %></p>
-    <%= link_to 'Request', new_package_booking_path(@package), class: "btn btn-primary" %>
+    <%= link_to 'Request Operator', new_package_booking_path(@package), class: "btn btn-primary" %>
   </div>
 </div>
-
-
 
 <div class="container">
     <div class="text-center">
       <div class="row  col-xs-6-offset-4">
 
-
-
       <div class="package-content">
-      <p></p>
-
+        <br>
+        <br>
       <%= @package.content %>
 
 <!--       <p>Drone Cinematography and Aerial Video Services:</p>
@@ -27,7 +23,7 @@
       </p> -->
 
       <p>Price:</p>
-      <h3 class="package-title">$ <%= @package.price %></h3>
+      <h3 class="package-title">$ 50 </h3>
 
       </div>
 

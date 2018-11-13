@@ -14,7 +14,7 @@
     <%= simple_form_for [@package, @booking] do |f| %>
       <%= f.input :title %>
       <%= f.input :location %>
-      <%= f.input :start_datetime, as: :datepicker %>
+      <%= f.input :start_datetime %>
       <%= f.input :end_datetime %>
       <%= f.input :cost %>
       <%= f.submit 'Request booking', class: "btn btn-primary" %>
