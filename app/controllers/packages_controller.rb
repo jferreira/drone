@@ -1,5 +1,5 @@
 class PackagesController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: :index
   def index
     if params.key? "query"
       query = params[:query]
