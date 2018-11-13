@@ -1,32 +1,29 @@
 class PackagesController < ApplicationController
 
   def index
-
-    @packages = Package.where.not(latitude: nil, longitude: nil)
-
-
-    @markers = @packages.map do |package|
+    # MAP  --------------------------
+    @valid_packages = Package.where.not(latitude: nil, longitude: nil)
+    @markers = @valid_packages.map do |package|
       {
         lat: package.latitude,
         lng: package.longitude,
         infoWindow: { content: render_to_string(partial: "/packages/map_box", locals: { package: package }) }
       }
     end
-
-    if params.key? "query"
-      query = params[:query]
-      @users = User.where(location: query)
-
-      @packages = []
-
-      @users.each do |user|
-        @packages << user.packages
-      end
-
+    
+    # SEARCH FILTER --------------------------
+    if params[:query].present?
+      sql_query = " \
+        packages.location @@ :query \
+        OR users.location @@ :query \
+        OR users.first_name @@ :query \
+        OR users.last_name @@ :query \
+      "
+      @packages = Package.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+      
     else
       @packages = Package.all
     end
-
   end
 
   def new
@@ -76,6 +73,3 @@ class PackagesController < ApplicationController
   end
 
 end
-
-
-
