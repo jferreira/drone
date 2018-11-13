@@ -15,7 +15,6 @@
     <div class="container">
       <div class="row">
 
-
         <!-- SEARCH BY ------------------------------- -->
 
         <%= form_tag(packages_path, method: :get, role: 'form') do %>
@@ -59,18 +58,19 @@
 </div><!-- Banner end -->
 
 
-<div class="container">
-  <div class="row">
+
 
 
       <% @packages.each do |package|%>
         <div class="col-xs-12 col-sm-4 col-md-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(src="<%= package.url_image %>");>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://thumbs.gfycat.com/CrispEnlightenedBarbet-size_restricted.gif");>
             <div class="card-category">Popular</div>
             <div class="card-description">
-              <h2>Le Wagon Shanghai</h2>
-              <p>Very cool city, the best</p>
+              <h2><%= package.title %></h2>
+              <p><%= package.description %></p>
             </div>
+
+
 
             <% if current_user.nil? %>
             <img class="card-user" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu">
