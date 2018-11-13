@@ -2,6 +2,7 @@
   "name": "drone",
   "private": true,
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^2.3.0",
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
     "gmaps": "^0.4.24",
