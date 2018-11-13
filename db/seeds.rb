@@ -1,3 +1,7 @@
+#### User Creation ####
+
+letters = %w[q w e r t y]
+
 puts "------------------------------"
 puts "Clearing DB"
 Booking.destroy_all
@@ -5,6 +9,7 @@ Package.destroy_all
 User.destroy_all
 #### User Creation  --------------------------------------------------------- ####
 puts "------------------------------"
+
 puts 'Start creating user accounts'
 
 
@@ -62,10 +67,12 @@ images = %w[https://thumbs.gfycat.com/CrispEnlightenedBarbet-size_restricted.gif
     url_image: images.sample,
     price: %w[$50 $100 $110 $120 $130 $140].sample,
     # review_id: (1..50).to_a.sample,
+
     user: User.all.sample,
     location: %w[canggu kuta ubud munduk].sample,
-    lat: lat.sample,
-    long: long.sample
+    latitude: lat.sample,
+    longitude: long.sample
+
   }
     package = Package.new(package_data)
     package.save!
@@ -106,17 +113,4 @@ puts 'Start creating bookings data'
 end
 puts "---------------------------------------------------------------------"
 puts 'Finshed creating bookings data'
-
-
-
-
-
-
-
-
-
-
-
-
-
 
