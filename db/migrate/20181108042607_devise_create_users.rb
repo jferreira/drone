@@ -20,6 +20,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :location
       t.string :url_image
 
+
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at

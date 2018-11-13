@@ -3,7 +3,7 @@ class CreatePackages < ActiveRecord::Migration[5.2]
     create_table :packages do |t|
       t.string :title
       t.text :description
-      t.string :url_image
+      t.string :photo
       t.integer :price
       t.references :user, foreign_key: true
 

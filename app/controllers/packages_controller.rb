@@ -10,7 +10,7 @@ class PackagesController < ApplicationController
         infoWindow: { content: render_to_string(partial: "/packages/map_box", locals: { package: package }) }
       }
     end
-    
+
     # SEARCH FILTER --------------------------
     if params[:query].present?
       sql_query = " \
@@ -20,7 +20,7 @@ class PackagesController < ApplicationController
         OR users.last_name @@ :query \
       "
       @packages = Package.joins(:user).where(sql_query, query: "%#{params[:query]}%")
-      
+
     else
       @packages = Package.all
     end
@@ -69,7 +69,7 @@ class PackagesController < ApplicationController
   # private
 
   def package_params
-  params.require(:package).permit(:title, :description, :url_image, :price, :photo)
+  params.require(:package).permit(:title, :description, :price, :photo)
   end
 
 end

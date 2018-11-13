@@ -1,4 +1,4 @@
-<div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= @package.url_image %>');">
+<div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path @package.photo %>');">
   <div class="banner-content">
     <h1><%= @package.title %> Package</h1>
     <p><%= @package.description %></p>
@@ -12,7 +12,7 @@
     <div class="text-center">
       <div class="row  col-xs-6-offset-4">
 
-<!--       <img src="<%= @package.url_image %>" alt="" class="package-image"> -->
+
 
       <div class="package-content">
       <p></p>
