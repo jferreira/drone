@@ -19,6 +19,10 @@
         <%= current_user.location.nil? ? 'Lovely island' : current_user.location %>
       </p>
 
+    <%= link_to 'Edit', edit_user_path, class: "btn btn-default"  %>
+    <%= link_to 'Bookings', dashboard_path, class: "btn btn-default"  %>
+    <%= link_to 'Jobs', dashboard_path, class: "btn btn-default"  %>
+
   </div>
 
 </div>
