@@ -1,8 +1,6 @@
 <div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://s3-us-west-2.amazonaws.com/hispotion-prod/wp-content/uploads/2015/09/surf-video-759x500.jpg');">
-
   <div class="banner-content">
     <h1>Drone Packages</h1>
-
     <p>Drones are banging, Get one to follow you</p>
     <!--     <a class="btn btn-primary btn-lg">Start now</a> -->
   </div>
@@ -10,8 +8,6 @@
 
 
 <!--     <a class="btn btn-primary btn-lg">Start now</a> -->
-
-
     <div class="container">
       <div class="row">
 
@@ -61,42 +57,18 @@
 <!-- THE LIST OF PACKAGES ----------------------------- -->
 <div class="container">
   <div class="row">
+    <!-- LIST ------------ -->
+    <% @packages.each do |package|%>
+      <div class="col-xs-12 col-sm-4 col-md-4">
 
-<!-- LIST ------------ -->
-    
-    
-      <% @packages.each do |package|%>
-        <div class="col-xs-12 col-sm-4 col-md-4">
-
-
-          <% if package.photo.blank? %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= package.url_image %>');">
-
-          <% else %>
-            <div class="card"
-              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-
-            <% user = package.user_id %>
-            <% url_image = package.url_image %>
-            <%= url_image %>
-             url('<%= url_image %>')">
-          <% end %>
-
-              <div class="card-category">
-                <%=package.location %>
-              </div>
-
-              <img class="card-user" src="<%= package.user.url_image %>"
-              >
-              <%= link_to 'See details', package_path(package), class:"card-link"  %>
-              </div>
-            </div>
-          <% end %>
-              
-              
+    </div>
+    <% end %>
+  </div>
+</div>
 
 <!-- MAPS ------------ -->
-                     
+<div class="container">
+  <div class="row">
    <div class="col-xs-8">
       <div class="row">
         <% @packages.each do |package|%>
@@ -104,11 +76,11 @@
             <%= render "packages/card", package: package %>
           </div>
         <% end %>
-
+          <%= render "packages/new_package_link" %>
       </div>
     </div>
-                     
-                     
+
+
     <div class="col-sm-4">
       <div
         id="map"
@@ -118,6 +90,7 @@
       >
       </div>
     </div>
-  </div>
-  <%= render "packages/new_package_link" %>
 </div>
+</div>
+
+
