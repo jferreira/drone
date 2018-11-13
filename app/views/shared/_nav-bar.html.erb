@@ -1,25 +1,28 @@
 <div class="navbar-wagon">
 
-<%= link_to 'Drone', packages_path %>
+  <!-- LOGO -->
+  <%= link_to 'Drone', packages_path %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <% if user_signed_in? %>
-      <%= current_user.first_name %>
-    <% end %>
-    <br>
-    <%= link_to 'Drone Packages', packages_path, class: "btn btn-default" %>
-    <br>
-    <%= link_to 'Your Bookings', dashboard_path, class: "btn btn-default" %>
-
+    <div>
+      <% if user_signed_in? %>
+        <p><%= current_user.first_name %> <%= current_user.last_name %></p>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to 'Drone Packages', packages_path, class: "btn btn-default" %>
+    </div>
+    <div>
+      <%= link_to 'Your Bookings', dashboard_path, class: "btn btn-default" %>
+    </div>
     <!-- DROPDOWN - DESKTOP -------------------------------------------------------------------------- -->
 
     <div class="navbar-wagon-item">
       <div class="dropdown">
 
         <% if user_signed_in? %>
-
           <% if current_user.url_image.nil? %>
               <img src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
           <% else %>
@@ -29,9 +32,9 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
           <% if user_signed_in? %>
-            <li><%= link_to 'Your Bookings', dashboard_path  %></li>
-            <li><%= link_to 'Add Package', new_package_path  %></li>
-            <li><%= link_to 'Your Profile', edit_user_path %></li>
+            <li><%= link_to 'Booked Packages', dashboard_path  %></li>
+            <li><%= link_to 'List Package', new_package_path  %></li>
+            <li><%= link_to 'Edit Profile', edit_user_path %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to 'Drone Packages', packages_path %></li>
@@ -47,18 +50,31 @@
 
   <!-- MOBILE ONLY------------------------------------------------------------------ -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
+
+  <div class="flex-box">
+
+    <div class="flex-item">
+      <% if user_signed_in? %>
+        <p><%= current_user.first_name %> <%= current_user.last_name %></p>
+      <% end %>
+    </div>
+
+    <div class="dropdown flex-item">
       <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <% if user_signed_in? %>
-            <li><%= link_to 'Your Bookings', dashboard_path  %></li>
-            <li><%= link_to 'Add Package', new_package_path  %></li>
-            <li><%= link_to 'Your Profile', edit_user_path %></li>
+            <li><%= link_to 'Booked Packages', dashboard_path  %></li>
+            <li><%= link_to 'List Package', new_package_path  %></li>
+            <li><%= link_to 'Edit Profile', edit_user_path %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to 'Log In', new_user_session_path %></li>
           <% end %>
       </ul>
     </div>
+
   </div>
+
+</div>
+
 </div>
