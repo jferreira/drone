@@ -1,7 +1,6 @@
 <% if package.photo.blank? %>
   <p>no pic</p>
 
-
 <!--
   <div class="card"
     style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
@@ -9,7 +8,9 @@
   <% end %>
  -->
 
-  <div class="card-category"><%=package.title %></div>
+  <div class="card-category"><%=package.title %>
+  </div>
+
   <div class="card-description">
     <p><%=package.description %></p>
 
