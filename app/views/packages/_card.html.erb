@@ -2,20 +2,22 @@
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=package.url_image %>');">
   <% else %>
 
-
   <% user = package.user_id %>
   <% url_image = user.url_image %>
+
   <div class="card"
     style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
    url('<%= cl_image_path url_image, height: 400, width: 400, crop: :fill %>')">
   <% end %>
 
-  <div class="card-category"><%=package.title %></div>
+  <div class="card-category"><%=package.title %>
+  </div>
+
   <div class="card-description">
     <p><%=package.description %></p>
     <!-- <p>Very cool city, the best</p> -->
   </div>
-  <img class="card-user" src=<%=package.url_image %>
+<!--   <img class="card-user" src=<%=package.url_image %> -->
   >
 
   <%= link_to 'See details', package_path(package), class:"card-link"  %>

@@ -1,4 +1,4 @@
-<%= render "profile-header" %>
+<%= render "./layouts/profile-header" %>
 
 <div class="container">
   <ul class="nav nav-tabs">
@@ -11,23 +11,23 @@
     <div id="home" class="tab-pane fade in active">
 
             <% if @bookings.length.zero? %>
-                <p>Make your first BOOKING</p>
+                <p>Welcome to Drone, lets get you started. First thing you want to do is review all the avlable drone piolts in your area</p>
                 <%= link_to 'Packages', packages_path, class:"btn btn-primary"  %>
             <% end %>
 
             <% @bookings.each_with_index do |booking, idx|%>
-                  <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
-                  <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
+              <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
+              <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
 
-                  <%= render 'shared/booking_header',
-                  index: idx + 1,
-                  booking: booking,
-                  number_hours: number_hours,
-                  status_color: status_color
-                  %>
+              <%= render 'shared/booking_header',
+              index: idx + 1,
+              booking: booking,
+              number_hours: number_hours,
+              status_color: status_color
+              %>
 
-                  <%= render 'shared/booking_body', booking: booking %>
-                  <%= render 'shared/booking_footer', booking: booking %>
+              <%= render 'shared/booking_body', booking: booking %>
+              <%= render 'shared/booking_footer', booking: booking %>
 
             <% end %>
 
@@ -37,15 +37,13 @@
     <div id="menu1" class="tab-pane fade">
 
             <% if @my_jobs.length.zero? %>
-
-                <p>No JOBS yet</p>
-
+                <p>Become a drone operator, and list your first package</p>
+                <%= link_to 'Packages', packages_path, class:"btn btn-primary"  %>
             <% end %>
 
            <% @my_jobs.each_with_index do |booking, idx|%>
 
                   <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
-
                   <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
 
                   <%= render 'shared/booking_header',

@@ -1,5 +1,7 @@
 class PackagesController < ApplicationController
+
   skip_before_action :authenticate_user!, only: :index
+
   def index
     # MAP  --------------------------
     @valid_packages = Package.where.not(latitude: nil, longitude: nil)
@@ -10,7 +12,7 @@ class PackagesController < ApplicationController
         infoWindow: { content: render_to_string(partial: "/packages/map_box", locals: { package: package }) }
       }
     end
-    
+
     # SEARCH FILTER --------------------------
     if params[:query].present?
       sql_query = " \
@@ -20,7 +22,7 @@ class PackagesController < ApplicationController
         OR users.last_name @@ :query \
       "
       @packages = Package.joins(:user).where(sql_query, query: "%#{params[:query]}%")
-      
+
     else
       @packages = Package.all
     end
