@@ -1,21 +1,89 @@
 <%= render "./layouts/profile-header" %>
 
 <div class="container">
+  <div class="row">
+
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Bookings</a></li>
     <li><a data-toggle="tab" href="#menu1">Jobs</a></li>
   </ul>
 
-  <div class="tab-content">
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
 
-    <div id="home" class="tab-pane fade in active">
+        <% if @bookings.length.zero? %>
+            <p>Welcome to Drone, lets get you started. First thing you want to do is review all the avlable drone piolts in your area</p>
+            <%= link_to 'Packages', packages_path, class:"btn btn-primary"  %>
+        <% end %>
 
-            <% if @bookings.length.zero? %>
-                <p>Welcome to Drone, lets get you started. First thing you want to do is review all the avlable drone piolts in your area</p>
-                <%= link_to 'Packages', packages_path, class:"btn btn-primary"  %>
-            <% end %>
+        <% @bookings.each_with_index do |booking, idx|%>
+          <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
+          <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
+              <div>
 
-            <% @bookings.each_with_index do |booking, idx|%>
+<!--                 <div class="col-xs-12 col-sm-12 col-md-12">
+
+                  <div class="card-wide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://thumbs.gfycat.com/CrispEnlightenedBarbet-size_restricted.gif");>
+
+                    <div class="card-category">
+                      <p>Title: <%= booking.title %></p>
+                      <p>Status: <%= booking.status %></p>
+                      <p>Location: <%= booking.location %></p>
+                      <p>Start:<%= booking.start_datetime %></p>
+                      <p>end: <%= booking.end_datetime %></p>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div> -->
+
+
+<%= render 'shared/booking_header',
+                index: idx + 1,
+                booking: booking,
+                number_hours: number_hours,
+                status_color: status_color
+                %>
+
+
+<%= render 'shared/booking_body', booking: booking %>
+                 <%= render 'shared/booking_footer', booking: booking %>
+              </div>
+
+              <!--
+              t.string "title"
+              t.string "status"
+              t.string "location"
+              t.datetime "start_datetime"
+              t.datetime "end_datetime"
+              t.string "cost"
+              t.bigint "package_id"
+              t.bigint "user_id"
+              t.datetime "created_at", null: false
+              t.datetime "updated_at", null: false
+              t.integer "lat"
+              t.integer "long"
+                -->
+
+          </div>
+
+        </div>
+
+        <% end %>
+
+      </div>
+
+
+      <div id="menu1" class="tab-pane fade">
+
+        <% if @my_jobs.length.zero? %>
+            <p>Become a drone operator, and list your first package</p>
+            <%= link_to 'Packages', packages_path, class:"btn btn-primary"  %>
+        <% end %>
+
+       <% @my_jobs.each_with_index do |booking, idx|%>
+
               <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
               <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
 
@@ -29,36 +97,11 @@
               <%= render 'shared/booking_body', booking: booking %>
               <%= render 'shared/booking_footer', booking: booking %>
 
-            <% end %>
+        <% end %>
 
-    </div>
+      </div> <!-- end menu1 -->
 
+    </div> <!-- end tab-content -->
 
-    <div id="menu1" class="tab-pane fade">
-
-            <% if @my_jobs.length.zero? %>
-                <p>Become a drone operator, and list your first package</p>
-                <%= link_to 'Packages', packages_path, class:"btn btn-primary"  %>
-            <% end %>
-
-           <% @my_jobs.each_with_index do |booking, idx|%>
-
-                  <% number_hours = ((booking.end_datetime - booking.start_datetime) / 3600).floor %>
-                  <% status_color = booking.status === 'Accepted' ? 'green' : 'red' %>
-
-                  <%= render 'shared/booking_header',
-                  index: idx + 1,
-                  booking: booking,
-                  number_hours: number_hours,
-                  status_color: status_color
-                  %>
-
-                  <%= render 'shared/booking_body', booking: booking %>
-                  <%= render 'shared/booking_footer', booking: booking %>
-
-              <% end %>
-
-    </div>
-
-  </div>
-</div>
+  </div> <!-- row -->
+</div> <!-- end containter -->

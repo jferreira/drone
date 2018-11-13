@@ -1,28 +1,29 @@
 <% if current_user.url_image.nil? %>
   <div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://s3-us-west-2.amazonaws.com/hispotion-prod/wp-content/uploads/2015/09/surf-video-759x500.jpg');">
+
 <% else %>
   <div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= current_user.url_image %>');">
 <% end %>
 
-  <div class="banner-content">
+    <div class="banner-content">
 
-    <% if current_user.url_image.nil? %>
-      <img class="img-rnd-large" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" alt="">
-    <% else %>
-      <img class="img-rnd-large" src="<%= current_user.url_image %>" alt="">
-    <% end %>
+      <% if current_user.url_image.nil? %>
+        <img class="img-rnd-large" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" alt="">
+      <% else %>
+        <img class="img-rnd-large" src="<%= current_user.url_image %>" alt="">
+      <% end %>
 
-      <h1>
-        <%= current_user.first_name.nil? ? 'Hello stranger' : current_user.first_name + " " + current_user.last_name %>
-      </h1>
-      <p>
-        <%= current_user.location.nil? ? 'Lovely island' : current_user.location %>
-      </p>
+        <h1>
+          <%= current_user.first_name.nil? ? 'Hello stranger' : current_user.first_name + " " + current_user.last_name %>
+        </h1>
+        <p>
+          <%= current_user.location.nil? ? 'Lovely island' : current_user.location %>
+        </p>
 
-    <%= link_to 'Edit', edit_user_path, class: "btn btn-default"  %>
-    <%= link_to 'Bookings', dashboard_path, class: "btn btn-default"  %>
-    <%= link_to 'Jobs', dashboard_path, class: "btn btn-default"  %>
+      <%= link_to 'Edit', edit_user_path, class: "btn btn-default"  %>
+      <%= link_to 'Bookings', dashboard_path, class: "btn btn-default"  %>
+      <%= link_to 'Jobs', dashboard_path, class: "btn btn-default"  %>
 
+    </div>
   </div>
-
 </div>

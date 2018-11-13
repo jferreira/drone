@@ -1,87 +1,60 @@
-<div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://s3-us-west-2.amazonaws.com/hispotion-prod/wp-content/uploads/2015/09/surf-video-759x500.jpg');">
+
+<!-- HEADER ------------------------------- -->
+<div class="banner-half" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://i.gifer.com/TwM4.gif');">
 
   <div class="banner-content">
     <h1>Drone Packages</h1>
 
     <p>Drones are banging, Get one to follow you</p>
     <!--     <a class="btn btn-primary btn-lg">Start now</a> -->
+
+    <!-- SEARCH BY ------------------------------- -->
+
+    <%= form_tag(packages_path, method: :get, role: 'form') do %>
+
+      <div class='row'>
+        <div class='offset-xs-0 col-xs-12 offset-md-0 col-md-12'>
+
+          <div class="form-group">
+            <%= text_field_tag :query, nil, placeholder: 'Locations, Operators', class: 'form-control' %>
+            <br>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+            <%= submit_tag "Reset", class: "btn btn-default", type: 'reset', value: 'Reset' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 </div>
-
-
-<!--     <a class="btn btn-primary btn-lg">Start now</a> -->
-
-
-    <div class="container">
-      <div class="row">
-
-        <!-- SEARCH BY ------------------------------- -->
-
-        <%= form_tag(packages_path, method: :get, role: 'form') do %>
-
-          <div class='row'>
-            <div class='offset-xs-0 col-xs-12 offset-md-0 col-md-12'>
-
-              <div class="form-group">
-                <%= text_field_tag :query, nil, placeholder: 'Locations, Operators', class: 'form-control' %>
-                <br>
-                <%= submit_tag "Search", class: "btn btn-primary" %>
-                <%= submit_tag "Reset", class: "btn btn-default", type: 'reset', value: 'Reset' %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-
-        <!-- FILTER BY ------------------------------- -->
-        <!--
-        <div class="col-xs-12 col-sm-12 col-md-12">
-              <div class="btn-group">
-                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <p>Filter:</p>
-                </button>
-                <div class="dropdown-menu">
-                        <p>Filter by distance</p>
-                        <p>Filter by price</p>
-                </div>
-              </div>
-          </div>
-        -->
-      <br>
-      </div><!-- Row end -->
-    </div><!-- Container end -->
-  </div><!-- Banner content end -->
-</div><!-- Banner end -->
-
 
 <div class="container">
   <div class="row">
-   <div class="col-xs-8">
-      <div class="row">
-        <% @packages.each do |package|%>
-          <div class="col-xs-8 col-sm-4 col-md-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= package.url_image %>')";>
-          <div class="card-category"><%= package.location %></div>
-            <div class="card-description">
-              <h2><%= package.title %></h2>
-              <p><%= package.description %></p>
+
+
+    <!-- FILTER BY ------------------------------- -->
+    <!--
+    <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="btn-group">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <p>Filter:</p>
+            </button>
+            <div class="dropdown-menu">
+                    <p>Filter by distance</p>
+                    <p>Filter by price</p>
             </div>
-            <% if package.user %>
-              <img class="card-user" src="<%= package.user.url_image %>" class="avatar dropdown-toggle" id="navbar-wagon-menu">
-            <% else %>
-              <img class="card-user" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu">
-            <% end %>
-            <a class="card-link" href="#" ></a>
-        </div>
-            <%= link_to 'See details', package_path(package), class:"card-link"  %>
           </div>
-      <% end %>
-    <%= render "packages/new_package_link" %>
-  </div>
-</div>
+      </div>
+    -->
+  <br>
+  </div><!-- Row end -->
+</div><!-- Container end -->
 
 <div class="container">
   <div class="row text-center ">
-    <h1>Check the map</h1>
+
+    <h2>Find an operator</h2>
+
       <div class="col-lg-4">
         <div
           id="map"
@@ -91,5 +64,39 @@
           >
         </div>
       </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <h2>Browse Packages</h2>
+
+        <% @packages.each do |package|%>
+
+          <div class="col-xs-8 col-sm-6 col-md-10">
+
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://i.gifer.com/TwM4.gif')";>
+              <div class="card-category"><%= package.location %></div>
+                <div class="card-description">
+                  <h2><%= package.title %></h2>
+                  <p><%= package.description %></p>
+                </div>
+
+                <% if package.user %>
+                  <img class="card-user" src="<%= package.user.url_image %>" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+                <% else %>
+                  <img class="card-user" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+                <% end %>
+                <a class="card-link" href="#" ></a>
+            </div>
+            <%= link_to 'See details', package_path(package), class:"card-link"  %>
+          </div>
+
+      <% end %>
+
+    <%= render "packages/new_package_link" %>
+
   </div>
 </div>
